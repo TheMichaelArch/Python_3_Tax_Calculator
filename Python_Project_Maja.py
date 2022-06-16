@@ -32,7 +32,7 @@ i = str()
 Mode = str()
 CR = 0
 INC = 0
-
+R = 0
 
 
 Income_Calculation = int(0)
@@ -44,6 +44,7 @@ while (Income_Calculation == 0 and Crypto_Calculation == 0 and Exit_Program == 0
     print ("Made By Maja Markus Mikael","\u2122")
     print ("Income Tax or Crypto Tax?", "\n", "Or type \'Exit\' to Quit.")
     Mode = str(input("Type Here Crypto/Income: "))
+    R = 0
 
     if (Mode == str("Income") or Mode == str("income")):
         Income_Calculation = 1
@@ -120,22 +121,22 @@ while (Income_Calculation == 0 and Crypto_Calculation == 0 and Exit_Program == 0
             print ("Your investment AMOUNT (€)?")
             Crypto_Investment = int(input("Type Here: "))
 
-            if (Crypto_Investment > Crypto_Income):
+            if (Crypto_Investment >= Crypto_Income):
                 print ("No tax if investment is of \'Negative\' profit...")
-
-                continue
-
-            if (Crypto_Investment < Crypto_Income):
+            else:
                 Crypto_Profit = Crypto_Income - Crypto_Investment
                 Tax_Amount_Crypto = Crypto_Profit / 100 * Crypto_Tax
                 Crypto_Profit_After_Tax = Crypto_Profit - Tax_Amount_Crypto
+                 
+                print (" Your tax amount: ", Tax_Amount_Crypto, "€", "\n", "Profit After Taxes: ", Crypto_Profit_After_Tax, "€", "\n", "Tax Percentage: ", Crypto_Tax, "%")
+            
 
-            print (" Your tax amount: ", Tax_Amount_Crypto, "€", "\n", "Profit After Taxes: ", Crypto_Profit_After_Tax, "€", "\n", "Tax Percentage: ", Crypto_Tax, "%")
-    
+            
             c = str(input("Calculate again? yes/no: "))
             if (c == str("no") or c == str("n") or c == str("N") or c == str("NO")):
                 Crypto_Calculation = 0
                 CR = 0
+                    
             else:
                 Crypto_Calculation = 1
 
